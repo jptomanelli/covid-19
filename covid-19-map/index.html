@@ -1,0 +1,38 @@
+<html>
+
+<head>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="./index.js"></script>
+    <style>
+        .county {
+            stroke: #333;
+            stroke-width: 1px;
+        }
+
+        .county:hover {
+            stroke: black;
+            cursor: pointer;
+            stroke-width: 2px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        div.tooltip {
+            color: #222;
+            background-color: #fff;
+            padding: .5em;
+            text-shadow: #f5f5f5 0 1px 0;
+            border-radius: 2px;
+            opacity: 0.9;
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+</body>
+
+</html>
