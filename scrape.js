@@ -1,22 +1,22 @@
 const fetch = require("node-fetch");
 const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
+const validTowns = [
+  "Islip",
+  "Huntington",
+  "Brookhaven",
+  "Babylon",
+  "Smithtown",
+  "Southold",
+  "Southampton",
+  "Riverhead",
+  "East Hampton",
+  "Shelter Island",
+  "Township not known"
+];
 
-const scrapers = {
+module.exports = {
   scrapeSuffolkTowns: async endpoints => {
-    const validTowns = [
-      "Islip",
-      "Huntington",
-      "Brookhaven",
-      "Babylon",
-      "Smithtown",
-      "Southold",
-      "Southampton",
-      "Riverhead",
-      "East Hampton",
-      "Shelter Island",
-      "Township not known"
-    ];
     const promises = endpoints.map(async ({ date, endpoint }) => {
       const res = await fetch(endpoint);
       const html = await res.text();
@@ -76,56 +76,3 @@ const scrapers = {
     return data;
   }
 };
-
-scrapers.scrapeSuffolkTowns([
-  {
-    date: "3/23/2020",
-    endpoint:
-      "https://www.suffolkcountyny.gov/Departments/Health-Services/Health-Bulletins/Novel-Coronavirus/covid-19-case-update-march-23-2020-230-pm"
-  },
-  {
-    date: "3/24/2020",
-    endpoint:
-      "https://www.suffolkcountyny.gov/Departments/Health-Services/Health-Bulletins/Novel-Coronavirus/covid-19-case-update-march-24-2020-230-pm"
-  },
-  {
-    date: "3/25/2020",
-    endpoint:
-      "https://www.suffolkcountyny.gov/Departments/Health-Services/Health-Bulletins/Novel-Coronavirus/covid-19-case-update-march-25-2020-230-pm"
-  },
-  {
-    date: "3/26/2020",
-    endpoint:
-      "https://www.suffolkcountyny.gov/Departments/Health-Services/Health-Bulletins/Novel-Coronavirus/covid-19-case-update-march-26-2020-230-pm"
-  },
-  {
-    date: "3/27/2020",
-    endpoint:
-      "https://www.suffolkcountyny.gov/Departments/Health-Services/Health-Bulletins/Novel-Coronavirus/covid-19-case-update-march-27-2020-230-pm"
-  },
-  {
-    date: "3/28/2020",
-    endpoint:
-      "https://www.suffolkcountyny.gov/Departments/Health-Services/Health-Bulletins/Novel-Coronavirus/covid-19-case-update-march-28-2020-230-pm"
-  },
-  {
-    date: "3/29/2020",
-    endpoint:
-      "https://www.suffolkcountyny.gov/Departments/Health-Services/Health-Bulletins/Novel-Coronavirus/covid-19-case-update-march-29-2020-230-pm"
-  },
-  {
-    date: "3/30/2020",
-    endpoint:
-      "https://www.suffolkcountyny.gov/Departments/Health-Services/Health-Bulletins/Novel-Coronavirus/covid-19-case-update-march-30-2020-230-pm"
-  },
-  {
-    date: "3/31/2020",
-    endpoint:
-      "https://www.suffolkcountyny.gov/Departments/Health-Services/Health-Bulletins/Novel-Coronavirus/covid-19-case-update-march-31-2020-230-pm"
-  },
-  {
-    date: "4/1/2020",
-    endpoint:
-      "https://www.suffolkcountyny.gov/Departments/Health-Services/Health-Bulletins/Novel-Coronavirus/covid-19-case-update-april-1-2020-230-pm"
-  }
-]);
